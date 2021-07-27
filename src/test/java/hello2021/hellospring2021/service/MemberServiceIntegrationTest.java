@@ -1,35 +1,31 @@
 package hello2021.hellospring2021.service;
 
 import hello2021.hellospring2021.domain.Member;
+import hello2021.hellospring2021.repository.MemberRepository;
 import hello2021.hellospring2021.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class MemberServiceTest {
+@SpringBootTest //스프링 컨테이너와 테스트를 함께 실행한다.
+@Transactional //테스트가 끝나면 rollback을 해줌.
+class MemberServiceIntegrationTest {
 
-    MemberService memService;
-        MemoryMemberRepository repository;
+    @Autowired MemberService memService;
+    @Autowired MemberRepository repository;
 
-        @BeforeEach
-        public void beforeEach(){
-            repository= new MemoryMemberRepository();
-            memService = new MemberService(repository);
-        }
-
-        @AfterEach
-    public  void afterEach(){
-        repository.clearStore();
-    }
 
     @Test
     void 회원가입() {
         //given
         Member member = new Member();
-        member.setName("helllo~");
+        member.setName("spring");
 
         //when
         Long saveId = memService.join(member);
