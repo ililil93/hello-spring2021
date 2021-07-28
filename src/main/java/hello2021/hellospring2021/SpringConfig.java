@@ -1,6 +1,7 @@
 package hello2021.hellospring2021;
 
 import hello2021.hellospring2021.repository.JdbcMemberRepository;
+import hello2021.hellospring2021.repository.JdbcTmplateMemberRepository;
 import hello2021.hellospring2021.repository.MemberRepository;
 import hello2021.hellospring2021.service.MemberService;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +26,8 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new JdbcMemberRepository(dataSource);
+       // return new JdbcMemberRepository(dataSource);
         //        return new MemoryMemberRepository();
-
+    return new JdbcTmplateMemberRepository(dataSource);
     }
 }
