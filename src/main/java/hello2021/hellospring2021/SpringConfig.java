@@ -12,12 +12,18 @@ import javax.persistence.EntityManager;
 @Configuration
 public class SpringConfig {
 
-    private EntityManager em;
 
-    @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    private MemberRepository memberRepository;
+
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
 
     //    private DataSource dataSource;
 //    public SpringConfig(DataSource dataSource) {
@@ -26,14 +32,14 @@ public class SpringConfig {
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository() {
-        // return new JdbcMemberRepository(dataSource);
-        //        return new MemoryMemberRepository();
-//    return new JdbcTmplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//    @Bean
+//    public MemberRepository memberRepository() {
+//        // return new JdbcMemberRepository(dataSource);
+//        //        return new MemoryMemberRepository();
+////    return new JdbcTmplateMemberRepository(dataSource);
+//        return new JpaMemberRepository(em);
+//    }
 }
