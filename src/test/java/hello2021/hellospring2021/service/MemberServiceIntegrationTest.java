@@ -14,11 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest //스프링 컨테이너와 테스트를 함께 실행한다.
-@Transactional //테스트가 끝나면 rollback을 해줌.
+@Transactional
+        //테스트가 끝나면 rollback을 해줌.
 class MemberServiceIntegrationTest {
 
-    @Autowired MemberService memService;
-    @Autowired MemberRepository repository;
+    @Autowired
+    MemberService memService;
+    @Autowired
+    MemberRepository repository;
 
 
     @Test

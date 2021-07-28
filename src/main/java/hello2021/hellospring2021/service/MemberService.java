@@ -2,13 +2,12 @@ package hello2021.hellospring2021.service;
 
 import hello2021.hellospring2021.domain.Member;
 import hello2021.hellospring2021.repository.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
